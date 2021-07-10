@@ -26,6 +26,10 @@ func fake(c echo.Context) error {
 	return c.String(http.StatusOK, "Fake data created !\n")
 }
 
+func product(c echo.Context) error {
+
+}
+
 func adminSite(c echo.Context) error {
 	return c.String(http.StatusOK, "This is an index in admin Site !\n")
 }
