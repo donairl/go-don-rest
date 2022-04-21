@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/donairl/go-don-rest/models"
 	"github.com/labstack/echo/v4"
@@ -35,6 +36,11 @@ func product(c echo.Context) error {
 	db.Find(&products)
 
 	return c.JSON(http.StatusOK, products)
+}
+
+func getProductByCode(c echo.Context) error {
+	id, _ := strconv.Atoi(c.Param("code"))
+	// return c.JSON(http.StatusOK, users[id])
 }
 
 func adminSite(c echo.Context) error {
