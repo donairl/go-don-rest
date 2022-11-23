@@ -19,7 +19,8 @@ func RegisterApi(e *echo.Echo, dbGlobal *gorm.DB) {
 	db = dbGlobal
 	g.GET("", adminSite)
 	g.GET("/fake", fake)
-	g.GET("/product", product)
+	g.GET("/products", product)
+	e.GET("/products/:id", getUser)
 }
 
 func fake(c echo.Context) error {
@@ -39,8 +40,10 @@ func product(c echo.Context) error {
 }
 
 func getProductByCode(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("code"))
-	return c.JSON(http.StatusOK, id)
+	id, _ := strconv.Atoi(c.Param("id"))
+	var products []models.Product
+	db.First(&products,id)
+	return c.JSON(http.StatusOK, products)
 }
 
 func adminSite(c echo.Context) error {
