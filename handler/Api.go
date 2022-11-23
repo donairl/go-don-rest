@@ -40,7 +40,7 @@ func product(c echo.Context) error {
 
 func getProductByCode(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("code"))
-	// return c.JSON(http.StatusOK, users[id])
+	return c.JSON(http.StatusOK, id)
 }
 
 func adminSite(c echo.Context) error {

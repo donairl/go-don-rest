@@ -7,7 +7,7 @@ import (
 )
 
 func ConnectDb() *gorm.DB {
-	dsn := "host=localhost user=postgres password=1234 dbname=test port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dsn := "host=localhost user=postgres password=1234 dbname=ecommerce_dev port=5432 sslmode=disable TimeZone=Asia/Jakarta"
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -15,8 +15,8 @@ func ConnectDb() *gorm.DB {
 	}
 
 	// Migrate the schema
-
-	db.AutoMigrate(&models.Product{})
+   
+	db.AutoMigrate(&models.User{},&models.Product{},&models.Category{}, &models.Cart{})
 
 	return db
 }

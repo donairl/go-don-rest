@@ -11,4 +11,11 @@ type Product struct {
 	Unit   string `gorm:"type:varchar(12)"`
 	Weight float32
 	Price  float32
+	CategoryID int 
+	Category Category
+}
+
+type Category struct {
+	gorm.Model
+	Name string  `gorm:"type:varchar(20)"`
 }
