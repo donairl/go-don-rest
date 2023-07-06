@@ -20,7 +20,7 @@ func RegisterApi(e *echo.Echo, dbGlobal *gorm.DB) {
 		return c.String(http.StatusOK, "Admin test !\n")
 	})
 	db = dbGlobal
-	g.GET("", adminSite)
+	g.GET("", apiSite)
 	g.GET("/fake", fake)
 	g.GET("/products", product)
 	e.GET("/products/:id", getProductByCode)
@@ -101,6 +101,6 @@ func getProductByCode(c echo.Context) error {
 	return c.JSON(http.StatusOK, products)
 }
 
-func adminSite(c echo.Context) error {
-	return c.String(http.StatusOK, "This is an index in admin Site !\n")
+func apiSite(c echo.Context) error {
+	return c.String(http.StatusOK, "This is an index in api Site !\n")
 }

@@ -21,11 +21,11 @@ func New(db *gorm.DB) *echo.Echo {
 
 	// Route => handler
 	echo.NotFoundHandler = handler.Home
-
+	e.Use(middleware.Static("/www-static"))
 	e.GET("/", handler.Home)
 
-	e.GET("/site", handler.Site)
-
+	e.GET("/about", handler.About)
+	//manage API ini /api/*
 	handler.RegisterApi(e, db)
 
 	return e
